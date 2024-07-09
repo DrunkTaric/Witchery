@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 import { CheckIcon } from '@radix-ui/react-icons';
 import { useAnimate, motion } from "framer-motion";
 
@@ -45,7 +46,7 @@ const Plan = function(props: Tier & { classNames: string }) {
     >
       <h1 className="text-3xl font-bold text-center">{props.name}</h1>
       <section className="space-y-10">
-        <img src={props.image} className="max-h-[10rem] lg:max-h-[15rem] ml-auto mr-auto" />
+        <Image src={props.image} width={200} height={200} alt={props.name} className="object-contain max-h-[10rem] lg:max-h-[15rem] ml-auto mr-auto" />
         <section className="space-y-3">
           {
             props.futures.map((item, index) => {

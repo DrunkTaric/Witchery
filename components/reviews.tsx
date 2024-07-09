@@ -1,6 +1,7 @@
-import { useDeviceDetection } from "@/hooks/DeviceDetection"
-import { useAnimate } from "framer-motion"
-import { useEffect, useState } from "react"
+import Image from "next/image";
+import { useAnimate } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useDeviceDetection } from "@/hooks/DeviceDetection";
 
 type Customer = { image: string, header: string, discription: string }
 
@@ -55,7 +56,7 @@ const Review = function(props: Customer) {
           </div>
         </div>
       </div>
-      <img src={props.image} className="h-full w-full object-cover rounded-2xl" />
+      <Image src={props.image} alt="Customer Image" width={399} height={720} className="h-full w-full object-cover rounded-2xl" />
     </section >
   )
 }
