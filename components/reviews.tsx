@@ -1,3 +1,4 @@
+import { useDeviceDetection } from "@/hooks/DeviceDetection"
 import { useAnimate } from "framer-motion"
 import { useEffect, useState } from "react"
 
@@ -12,15 +13,19 @@ const Customers: Customer[] = [
 
 const Review = function(props: Customer) {
   const [scope, animate] = useAnimate()
+  const isMobile = useDeviceDetection()
   const [Hovered, setHovered] = useState<boolean>(false)
   const [Loading, setLoading] = useState<boolean>(false)
+
+  useEffect(() => {
+    setHovered(isMobile)
+  }, [isMobile])
 
   useEffect(() => {
     if (!Loading) {
       if (Hovered) {
         const ShowContent = async () => {
           setLoading(true)
-          console.log("Its working ?")
           await animate("#container", { height: "50%" }, { duration: 0.3 })
           await animate("#content", { display: "block" }, { duration: 0 })
           await animate("#content", { opacity: 1 }, { duration: 0.3 })
@@ -28,7 +33,6 @@ const Review = function(props: Customer) {
         }
         ShowContent()
       } else {
-        console.log("Why is it calling this second time ?")
         const HideContent = async () => {
           setLoading(true)
           await animate("#content", { opacity: 0 }, { duration: 0.3 })
@@ -42,27 +46,27 @@ const Review = function(props: Customer) {
   }, [Hovered, Loading])
 
   return (
-    <section ref={scope} className="scale-95 hover:scale-100 duration-300" onMouseEnter={() => { setHovered(true) }} onMouseLeave={() => { setHovered(false) }} >
-      <div className="absolute flex w-[399px] h-[45rem] z-10 mb-0 mt-auto">
-        <div id="container" className="bg-gradient-to-t from-black via-black/85 to-black/85 mb-0 mt-auto w-full h-[0%] rounded-2xl">
-          <div id="content" className="hidden p-5 space-y-10">
+    <section ref={scope} className="min-h-[45rem] max-w-[399px] md:max-w-[370px] lg:max-w-[399px] xl:max-w-[350px] scale-95 hover:scale-100 duration-300" onMouseEnter={() => { if (!isMobile) { setHovered(true) } }} onMouseLeave={() => { if (!isMobile) { setHovered(false) } }} >
+      <div className="absolute flex w-full h-[45rem] z-10 mb-0 mt-auto">
+        <div id="container" className={"bg-gradient-to-t from-black via-black/85 to-black/85 mb-0 mt-auto w-full rounded-2xl h-[0%]"}>
+          <div id="content" className={"p-5 space-y-10 hidden"}>
             <h1 className="text-xl text-center">{props.header}</h1>
             <h1 className="text-md text-center">{props.discription}</h1>
           </div>
         </div>
       </div>
-      <img src={props.image} className="h-[45rem] max-w-[399px] object-cover rounded-2xl" />
-    </section>
+      <img src={props.image} className="h-full w-full object-cover rounded-2xl" />
+    </section >
   )
 }
 
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="flex flex-col w-full h-auto space-y-10 p-10">
+    <section id="reviews" className="flex flex-col w-full h-auto space-y-10 p-10 pt-2 md:pl-3 md:pr-3">
       <h1 className="font-bold text-7xl text-center">Reviews</h1>
-      <section className="flex w-full">
-        <section className="flex ml-auto mr-auto space-x-10">
+      <section className="flex w-full items-center justify-center">
+        <section className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-10 md:gap-5">
           {
             Customers.map((item, index) => {
               return <Review key={index} {...item} />
