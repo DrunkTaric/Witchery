@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <section>
+    <section className="">
     </section>
   )
 }
