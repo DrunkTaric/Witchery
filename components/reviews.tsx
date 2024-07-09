@@ -1,6 +1,6 @@
 import Image from "next/image";
+import { useEffect, useState, lazy } from "react";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useState } from "react";
 import { useDeviceDetection } from "@/hooks/DeviceDetection";
 
 type Customer = { image: string, header: string, discription: string }
@@ -38,6 +38,7 @@ const ReviewBrowser = function(props: Customer) {
   useEffect(() => {
     if (!Loading) {
       if (Hovered) {
+        ShowContent()
       } else {
         HideContent()
       }

@@ -1,4 +1,5 @@
 import Spline from '@splinetool/react-spline';
+import { Suspense } from 'react';
 
 export default function Hero() {
   return (
@@ -8,6 +9,11 @@ export default function Hero() {
           <h1 className="mt-52 lg:mt-0 text-center lg:text-left text-2xl md:text-4xl xl:text-5xl 2xl:text-6xl font-bold">Welcome to <span className="bg-gradient-to-r from-purple-700 to-blue-800 bg-clip-text text-transparent">Venom</span></h1>
           <h1 className="text-sm xl:text-lg text-center lg:text-left">Best Cursed Potions and Elixir company on the planet</h1>
         </section>
+      </section>
+      <section className="absolute lg:relative flex w-full h-full max-h-[35rem] lg:max-h-[50rem] m-auto order-1 lg:order-2">
+        <Suspense fallback={<></>}>
+          <Spline scene="https://prod.spline.design/qPqcMJYibNIZeXQh/scene.splinecode" />
+        </Suspense>
       </section>
     </section>
   )
