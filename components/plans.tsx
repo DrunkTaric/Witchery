@@ -6,7 +6,7 @@ type Tier = { id: number, name: string, image: string, futures: string[], open?:
 
 const Tiers: Tier[] = [
   {
-    id: 1, name: "Starter Cobra", image: "/images/plans/1.png", futures: [
+    id: 1, name: "Starter Cobra", image: "/images/plans/1.webp", futures: [
       "Receive our \"Toxic Times\" newsletter with tips, tricks, and the latest in poison news.",
       "Enjoy a 5% discount on all standard poison products.",
       "Access to our beginner's guide to poisons, \"Poisoning 101\" and \"Stealth 101\".",
@@ -15,7 +15,7 @@ const Tiers: Tier[] = [
     ]
   },
   {
-    id: 2, name: "Gold Serpent", image: "/images/plans/2.png", futures: [
+    id: 2, name: "Gold Serpent", image: "/images/plans/2.webp", futures: [
       "All Starter Cobra Benefits",
       "10% discount on all poison products, including exclusive items.",
       "Receive a curated selection of poisons each month to experiment with.",
@@ -25,7 +25,7 @@ const Tiers: Tier[] = [
     ]
   },
   {
-    id: 3, name: "Diamond Viper", image: "/images/plans/3.png", futures: [
+    id: 3, name: "Diamond Viper", image: "/images/plans/3.webp", futures: [
       "All Gold Serpent Benefits",
       "20% discount on all poison products, including custom orders.",
       "Receive a premium selection of rare and potent poisons each month.",
