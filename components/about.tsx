@@ -12,7 +12,7 @@ export default function About() {
           </section>
         </section>
         <section className="flex order-1 xl:order-2">
-          <img src="/images/guide_cutout.png" className="w-[40rem] object-cover bg-cent m-auto" />
+          <img src="/images/guide.png" className="w-[40rem] object-cover bg-cent m-auto" />
         </section>
       </section>
     </section>
