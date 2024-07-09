@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useAnimate } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useDeviceDetection } from "@/hooks/DeviceDetection";
 
@@ -13,24 +13,25 @@ const Customers: Customer[] = [
 ]
 
 const ReviewBrowser = function(props: Customer) {
-  const [scope, animate] = useAnimate()
+  const contentAnimation = useAnimation()
+  const containerAnimation = useAnimation()
   const [Hovered, setHovered] = useState<boolean>(false)
   const [Loading, setLoading] = useState<boolean>(false)
 
 
   const ShowContent = async () => {
     setLoading(true)
-    await animate("#container", { height: "50%" }, { duration: 0.3 })
-    await animate("#content", { display: "block" }, { duration: 0 })
-    await animate("#content", { opacity: 1 }, { duration: 0.3 })
+    await containerAnimation.start({ height: "50%", transition: { duration: 0.3 } })
+    await contentAnimation.start({ display: "block", transition: { duration: 0 } })
+    await contentAnimation.start({ opacity: 1, transition: { duration: 0.3 } })
     setLoading(false)
   }
 
   const HideContent = async () => {
     setLoading(true)
-    await animate("#content", { opacity: 0 }, { duration: 0.3 })
-    await animate("#content", { display: "none" }, { duration: 0 })
-    await animate("#container", { height: "0%" }, { duration: 0.3 })
+    await contentAnimation.start({ opacity: 0, transition: { duration: 0.3 } })
+    await contentAnimation.start({ display: "none", transition: { duration: 0 } })
+    await containerAnimation.start({ height: "0%", transition: { duration: 0.3 } })
     setLoading(false)
   }
 
@@ -45,14 +46,14 @@ const ReviewBrowser = function(props: Customer) {
   }, [Hovered, Loading])
 
   return (
-    <section ref={scope} className="min-h-[45rem] max-w-[399px] md:max-w-[370px] lg:max-w-[399px] xl:max-w-[350px] scale-95 hover:scale-100 duration-300" onMouseEnter={() => { setHovered(true) }} onMouseLeave={() => { setHovered(false) }} >
+    <section className="min-h-[45rem] max-w-[399px] md:max-w-[370px] lg:max-w-[399px] xl:max-w-[350px] scale-95 hover:scale-100 duration-300" onMouseEnter={() => { setHovered(true) }} onMouseLeave={() => { setHovered(false) }} >
       <div className="absolute flex w-full h-[45rem] z-10 mb-0 mt-auto">
-        <div id="container" className={"bg-gradient-to-t from-black via-black/85 to-black/85 mb-0 mt-auto w-full rounded-2xl h-[0%]"}>
-          <div id="content" className={"p-5 space-y-10 hidden"}>
+        <motion.div animate={containerAnimation} className={"bg-gradient-to-t from-black via-black/85 to-black/85 mb-0 mt-auto w-full rounded-2xl h-[0%]"}>
+          <motion.div animate={contentAnimation} className={"p-5 space-y-10 hidden"}>
             <h1 className="text-xl text-center">{props.header}</h1>
             <h1 className="text-md text-center">{props.discription}</h1>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
       <Image src={props.image} alt="Customer Image" width={399} height={720} className="h-full w-full object-cover rounded-2xl" />
     </section >
@@ -64,8 +65,8 @@ const ReviewMobile = function(props: Customer) {
   return (
     <section className="min-h-[45rem] max-w-[399px] md:max-w-[370px] lg:max-w-[399px] xl:max-w-[350px] scale-95 hover:scale-100 duration-300" >
       <div className="absolute flex w-full h-[45rem] z-10 mb-0 mt-auto">
-        <div id="container" className={"bg-gradient-to-t from-black via-black/85 to-black/85 mb-0 mt-auto w-full rounded-2xl h-[50%]"}>
-          <div id="content" className={"p-5 space-y-10"}>
+        <div className={"bg-gradient-to-t from-black via-black/85 to-black/85 mb-0 mt-auto w-full rounded-2xl h-[50%]"}>
+          <div className={"p-5 space-y-10"}>
             <h1 className="text-xl text-center">{props.header}</h1>
             <h1 className="text-md text-center">{props.discription}</h1>
           </div>
