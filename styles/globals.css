@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  scroll-behavior: smooth;    /* <----- THE SECRET ---- */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,8 +27,21 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+body::-webkit-scrollbar {
+  width: 6px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: blue;    /* color of the scroll thumb */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
