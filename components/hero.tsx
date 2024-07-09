@@ -9,9 +9,6 @@ export default function Hero() {
           <h1 className="text-sm xl:text-lg text-center lg:text-left">Best Cursed Potions and Elixir company on the planet</h1>
         </section>
       </section>
-      <section className="absolute lg:relative flex w-full h-full max-h-[35rem] lg:max-h-[50rem] m-auto order-1 lg:order-2">
-        <Spline scene="https://prod.spline.design/qPqcMJYibNIZeXQh/scene.splinecode" />
-      </section>
     </section>
   )
 }
