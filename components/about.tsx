@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function About() {
   return (
     <section id="about" className="pt-10 md:p-10 md:pb-0 space-y-10 md:space-y-20">
@@ -12,7 +14,7 @@ export default function About() {
           </section>
         </section>
         <section className="flex order-1 xl:order-2">
-          <img src="/images/guide.webp" className="w-[40rem] object-cover bg-cent m-auto" />
+          <Image src="/images/guide.webp" alt="skeleton holding a torch" width={650} height={700} className="w-[40rem] object-contain bg-cent m-auto" />
         </section>
       </section>
     </section>
