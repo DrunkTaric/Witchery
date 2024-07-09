@@ -1,6 +1,5 @@
 import About from "@/components/about";
 import Brands from "@/components/brands";
-import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Plans from "@/components/plans";
 import Reviews from "@/components/reviews";
@@ -16,7 +15,6 @@ export default function Home() {
       <About />
       <Plans />
       <Reviews />
-      <Footer />
     </main>
   );
 }
