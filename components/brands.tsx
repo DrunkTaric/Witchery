@@ -10,6 +10,7 @@ import {
   InstagramLogoIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons";
+import { useDeviceDetection } from "@/hooks/DeviceDetection";
 
 const slides = [
   { icon: <FigmaLogoIcon className="size-full" /> },
@@ -25,6 +26,7 @@ const slides = [
 
 
 export default function Brands() {
+  const isMobile = useDeviceDetection()
   const dupeslides = [...slides, ...slides, ...slides, ...slides, ...slides, ...slides]
   return (
     <section className="relative w-full overflow-x-hidden p-4">
@@ -37,7 +39,7 @@ export default function Brands() {
         }
       }}>
         {dupeslides.map((slide, index) => (
-          <div key={index} className="flex-shrink-0" style={{ width: `${100 / slides.length}%` }}>
+          <div key={index} className="flex-shrink-0" style={{ width: `${(isMobile ? 200 : 100) / slides.length}%` }}>
             <div className="flex items-center justify-center h-full">
               {slide.icon}
             </div>
