@@ -38,7 +38,7 @@ const Tiers: Tier[] = [
 const Plan = function(props: Tier & { classNames: string }) {
   return (
     <section
-      className={clsx("max-w-[35rem] p-5 lg:p-10 h-auto mt-0 border-4 border-purple-700 rounded-2xl scale-90 hover:scale-[92%] transition-all duration-300 space-y-5", props.classNames)}
+      className={clsx("max-w-[35rem] p-5 lg:p-10 h-auto mt-0 border-4 border-purple-700 rounded-2xl scale-90 lg:hover:scale-[92%] transition-all duration-300 space-y-5", props.classNames)}
     >
       <h1 className="text-3xl font-bold text-center">{props.name}</h1>
       <section className="space-y-10">
@@ -67,10 +67,10 @@ export default function Plans() {
     <section id="plans" className="w-full h-auto pt-10">
       <h1 className="font-bold text-7xl text-center">Our Plans</h1>
       <div className="flex h-full items-center justify-center">
-        <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-4 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-1  ml-auto mr-auto">
-          <Plan classNames="col-span-1 col-start-1 md:col-span-2 md:col-start-2 lg:col-start-1 lg:col-span-1" {...Tiers[0]} />
-          <Plan classNames="col-span-1 md:col-span-2 lg:col-span-1" {...Tiers[1]} />
-          <Plan classNames="col-span-1 md:col-span-2 lg:col-span-1" {...Tiers[2]} />
+        <div className="grid grid-cols-1 grid-rows-3 md:grid-cols-4 md:grid-rows-2 xl:grid-cols-3 lg:grid-rows-1  ml-auto mr-auto">
+          <Plan classNames="col-span-1 col-start-1 md:col-span-2 md:col-start-2 xl:col-start-1 xl:col-span-1" {...Tiers[0]} />
+          <Plan classNames="col-span-1 md:col-span-2 xl:col-span-1" {...Tiers[1]} />
+          <Plan classNames="col-span-1 md:col-span-2 xl:col-span-1" {...Tiers[2]} />
         </div>
       </div>
     </section>
